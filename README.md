@@ -8,12 +8,18 @@ Bash script that generates all aws cloudwatch metrics and dimensions then builds
 
 ## How To
 Before running make sure custom_gather.sh and pipeline.sh are executable. If not
-simply run 'chmod 755 custom_gather.sh pipeline.sh'
+simply run:
+```
+chmod 755 custom_gather.sh pipeline.sh
+```
 
 To select what AWS namespaces you want in the cloudwatch.yml file set the boolean
 flag in the cloudwatch_config_builder/config.yml.
 
-To create the cloudwatch.yml run pipeline.sh <REGION> <CUSTOM_NAMESPACE>
+To create the cloudwatch.yml run:
+```
+./pipeline.sh <REGION> <CUSTOM_NAMESPACE>
+```
 - REGION: Required to run. The region of the aws account. (ex: us-west-1)
 - CUSTOM_NAMESPACE: Optional to run. A list of custom namespaces separated by a comma. (ex: Billing,CloudTrailMetrics...)
 
