@@ -1,5 +1,4 @@
 python3 -V
-mkdir cloudwatch_metric_json cloudwatch_exporter_metrics
 aws --region="$1" cloudwatch list-metrics --namespace=AWS/AutoScaling > cloudwatch_config_builder/files/cloudwatch_metrics/auto_scaling.json
 aws --region="$1" cloudwatch list-metrics --namespace=AWS/Billing > cloudwatch_config_builder/files/cloudwatch_metrics/billing.json
 aws --region="$1" cloudwatch list-metrics --namespace=AWS/DynamoDB > cloudwatch_config_builder/files/cloudwatch_metrics/dynamo_db.json
