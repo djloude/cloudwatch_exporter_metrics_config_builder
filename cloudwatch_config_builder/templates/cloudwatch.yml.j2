@@ -1,0 +1,196 @@
+{{ ansible_managed | comment }}
+---
+region: {{ region }}
+metrics:
+{% if auto_scaling %}
+# Auto Scaling Metrics
+{% for metric in auto_scaling_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if billing %}
+# Billing Metrics
+{% for metric in billing_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if custom %}
+# Custom Metrics
+{% for metric in custom_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if dynamo_db %}
+# DynamoDB Metrics
+{% for metric in dynamo_db_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if ebs %}
+# EBS Metrics
+{% for metric in ebs_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if ec2 %}
+# EC2 Metrics
+{% for metric in ec2_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if elasti_cache %}
+# ElastiCache Metrics
+{% for metric in elasti_cache_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if events %}
+# Events Metrics
+{% for metric in events_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if lambda %}
+# Lambda Metrics
+{% for metric in lambda_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if logs %}
+# Logs Metrics
+{% for metric in logs_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if network_elb %}
+# NetworkELB Metrics
+{% for metric in network_elb_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if rds %}
+# RDS Metrics
+{% for metric in rds_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if s3 %}
+# S3 Metrics
+{% for metric in s3_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if transit_gateway %}
+# Transit Gateway Metrics
+{% for metric in transit_gateway_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if trusted_advisor %}
+# Trusted Advisor Metrics
+{% for metric in trusted_advisor_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if usage %}
+# Usage Metrics
+{% for metric in usage_metrics %}
+- aws_namespace: {{ metric.aws_namespace }}
+  aws_metric_name: {{ metric.aws_metric_name }}
+  aws_dimensions: {{ metric.aws_dimensions | regex_replace("u") | regex_replace("'") }}
+{% if metric.aws_statistics != [] %}
+  aws_statistics: {{ metric.aws_statistics | regex_replace("u'") | regex_replace("'" ) }}
+{% endif %}
+
+{% endfor %}
+{% endif %}

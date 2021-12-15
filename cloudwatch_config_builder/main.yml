@@ -1,0 +1,17 @@
+---
+- hosts: cloudwatch_exporter
+  become: true
+
+  pre_tasks:
+    - name: Load Configuration.
+      ansible.builtin.include_vars: "{{ item }}"
+      with_fileglob:
+        - config.yml
+        - files/cloudwatch_metrics/*
+
+  tasks:
+    - name: Build Cloudwatch Exporter Metrics File.
+      ansible.builtin.template:
+        src: templates/cloudwatch.yml.j2
+        dest: "cloudwatch.yml"
+      when: cloudwatch_metrics_enable
