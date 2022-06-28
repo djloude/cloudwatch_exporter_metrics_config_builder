@@ -1,9 +1,9 @@
 ---
 # Cloudwatch Exporter metrics configuration (cloudwatch_metrics.yml)
 cloudwatch_metrics_enable: true
-auto_scaling: true
-billing: true
-custom: true
+auto_scaling: no
+billing: no
+custom: no
 dynamo_db: true
 ebs: true
 ec2: true
