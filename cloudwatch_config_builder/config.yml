@@ -12,7 +12,7 @@ events: no
 lambda: no
 logs: no
 network_elb: no
-rds: true
+rds: no
 s3: no
 transit_gateway: no
 trusted_advisor: no
